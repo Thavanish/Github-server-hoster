@@ -37,7 +37,9 @@ docker create --name pufferpanel -p 8080:8080 -p 5657:5657 -v pufferpanel-config
 docker start pufferpanel
 docker exec -it pufferpanel /pufferpanel/pufferpanel user add
 echo "to start type gserver in the cli."
-
+cd
+echo "alias gserver='bash ${mydir}/start.sh'" > .bashrc
+echo "complete!"
 
 
 
