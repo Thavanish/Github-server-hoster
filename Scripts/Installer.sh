@@ -6,8 +6,8 @@ basename $(pwd)
 mydir="$(basename $PWD)"
 echo "starting install...."
 sudo su 
-apt update && apt upgrade -y
-apt install git curl nano sudo wget sudo -y
+sudo apt update && apt upgrade -y
+sudo apt install git curl nano sudo wget sudo -y
 echo "installing docker..."
 
 # Add Docker's official GPG key:
@@ -31,11 +31,11 @@ sleep 10
 clear
 echo "installing pufferpanel..."
 sleep 2
-mkdir -p /var/lib/pufferpanel
-docker volume create pufferpanel-config
-docker create --name pufferpanel -p 8080:8080 -p 5657:5657 -v pufferpanel-config:/etc/pufferpanel -v /var/lib/pufferpanel:/var/lib/pufferpanel -v /var/run/docker.sock:/var/run/docker.sock --restart=on-failure pufferpanel/pufferpanel:latest
-docker start pufferpanel
-docker exec -it pufferpanel /pufferpanel/pufferpanel user add
+sudo mkdir -p /var/lib/pufferpanel
+sudo docker volume create pufferpanel-config
+sudo docker create --name pufferpanel -p 8080:8080 -p 5657:5657 -v pufferpanel-config:/etc/pufferpanel -v /var/lib/pufferpanel:/var/lib/pufferpanel -v /var/run/docker.sock:/var/run/docker.sock --restart=on-failure pufferpanel/pufferpanel:latest
+sudo docker start pufferpanel
+sudo docker exec -it pufferpanel /pufferpanel/pufferpanel user add
 echo "to start type gserver in the cli."
 cd
 echo "alias gserver='bash ${mydir}/start.sh'" > .bashrc
